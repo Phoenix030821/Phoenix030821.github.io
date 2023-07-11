@@ -6,6 +6,7 @@ categories:
 tags:
 - 学习
 - 算法
+mathjax: true
 ---
 
 **41. 缺失的第一个正数**
