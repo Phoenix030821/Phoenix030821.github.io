@@ -6,6 +6,7 @@ categories:
 tags:
 - android
 - 学习
+description: 为了完成大作业，学了点连皮毛都算不上的东西。
 ---
 
 创建新项目之后，代码在`src/main/java`中，其对应布局在 `src/main/res/layout`中。
