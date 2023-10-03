@@ -165,6 +165,81 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phoenix030821.github.io/2023/10/03/230930/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar0.jpg">
+      <meta itemprop="name" content="Phoenix030821">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Phoenix030821's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/10/03/230930/" class="post-title-link" itemprop="url">9.30 保研后随笔</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-10-03 20:30:26 / 修改时间：12:50:44" itemprop="dateCreated datePublished" datetime="2023-10-03T20:30:26+00:00">2023-10-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>好久没写过东西了，感觉啥也写不出来。先写个流水账，大概挂上来。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/10/03/230930/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://phoenix030821.github.io/2023/07/11/leetcode-notes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -196,7 +271,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-01 16:38:56" itemprop="dateModified" datetime="2023-10-01T16:38:56+00:00">2023-10-01</time>
+                <time title="修改时间：2023-10-03 12:50:44" itemprop="dateModified" datetime="2023-10-03T12:50:44+00:00">2023-10-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -220,61 +295,14 @@
 
       
           <p>感叹一下，自己的水平下滑太多了。复健之路漫漫，虚心学习，不要有畏难之心。</p>
-<h4 id="41-缺失的第一个正数"><a href="#41-缺失的第一个正数" class="headerlink" title="41. 缺失的第一个正数"></a>41. 缺失的第一个正数</h4><p>题意：给一个未排序的整数数组，找其中没出现过的最小正整数。</p>
-<p>要求时间复杂度$O(n)$，空间复杂度$O(1)$。</p>
-<p>做出来了，但看了标签。</p>
-<p>如果没有空间复杂度要求，直接开个长度为$n$数组，打标记即可。</p>
-<p>有了空间复杂度要求，打标记较难，因为可以修改原数组，考虑原地打。</p>
-<p>类似<code>cuckoo hashing</code>，从第一个开始找，如果$k$在$1-n$之间，就将对应位置的数字替换成$k$，表示替换正确。（之前考虑替换成$0$，出现本来就是$0$的问题）</p>
-<p>最后从第一个位置找，第一个不符合要求的位置就是，否则为$n+1$。</p>
-<p>不要忘记<code>nums[i] = i + 1</code>的死循环跳出判断。</p>
-<p>代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">firstMissingPositive</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> tmp = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] &gt; <span class="number">0</span> &amp;&amp; nums[i] &lt;= n) &#123;</span><br><span class="line">                tmp = nums[i];</span><br><span class="line">                <span class="keyword">while</span>(tmp &gt; <span class="number">0</span> &amp;&amp; tmp &lt;= n &amp;&amp; nums[tmp - <span class="number">1</span>] != tmp) &#123;</span><br><span class="line">                    <span class="type">int</span> t = tmp - <span class="number">1</span>;</span><br><span class="line">                    tmp = nums[tmp - <span class="number">1</span>];</span><br><span class="line">                    nums[t] = t + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] != i + <span class="number">1</span>)</span><br><span class="line">                <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> n + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="15-三数之和"><a href="#15-三数之和" class="headerlink" title="15. 三数之和"></a>15. 三数之和</h4><p>经典的<code>3-sum</code>问题。</p>
-<p>题意：给一个整数数组，找和为0且不重复的三元组。</p>
-<p>排序之后，从左开始双指针操作。</p>
-<p>代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">int</span> s[<span class="number">3100</span>];</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">threeSum</span>(vector&lt;<span class="type">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt; &gt; ans;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">            s[i] = nums[i];</span><br><span class="line">        <span class="built_in">sort</span>(s, s + n);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(i &gt; <span class="number">0</span> &amp;&amp; s[i] == s[i - <span class="number">1</span>])<span class="keyword">continue</span>;</span><br><span class="line">            <span class="type">int</span> l = i + <span class="number">1</span>, r = n - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(l &lt; r) &#123;</span><br><span class="line">                <span class="keyword">if</span>(s[l] + s[r] + s[i] &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                    l++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(s[l] + s[r] + s[i] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    r--;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    vector&lt;<span class="type">int</span>&gt; v;</span><br><span class="line">                    v.<span class="built_in">push_back</span>(s[l]);</span><br><span class="line">                    v.<span class="built_in">push_back</span>(s[r]);</span><br><span class="line">                    v.<span class="built_in">push_back</span>(s[i]);</span><br><span class="line">                    ans.<span class="built_in">push_back</span>(v);</span><br><span class="line">                    l++;</span><br><span class="line">                    <span class="keyword">while</span>(s[l] == s[l - <span class="number">1</span>] &amp;&amp; l &lt; r)l++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>另外，<code>vector</code>排序可使用：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="2801-统计范围内的步进数字数目"><a href="#2801-统计范围内的步进数字数目" class="headerlink" title="2801. 统计范围内的步进数字数目"></a>2801. 统计范围内的步进数字数目</h4><p>第356场周赛题。</p>
-<p>如果一个整数相邻数位之间差的绝对值都恰好是<code>1</code>，那么这个数字被称为步进数字。</p>
-<p>给你两个正整数 <code>low</code> 和 <code>high</code> ，都用字符串表示，统计闭区间 <code>[low, high]</code> 内的步进数字数目。对<code>1e9 + 7</code>取模。</p>
-<p>数位DP模板题。</p>
-<p>首先预处理，<code>f[i][j]</code>表示最高位是第<code>i</code>位，且为<code>j</code>的方案数。</p>
-<p>然后设置函数<code>dp(i)</code>表示从<code>1</code>到<code>i</code>的方案数，用<code>dp(high) - dp(low)</code>算。单独处理以下<code>low</code>是否为步进数字。</p>
-<p>将数位从最高位开始枚举，从<code>0</code>到<code>i - 1</code>的该位，如果和<code>x</code>高一位的数相差为1，则加上<code>f[t - i][j]</code>，表示前几位和<code>x</code>相同的结果数。最后加上不到<code>x</code>的位数的方案数。</p>
-<p>取模时要注意！！两个取模之后的数相减可能成为负数，要让被减数先加<code>MOD</code>，周赛两行泪。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> f[<span class="number">110</span>][<span class="number">10</span>];</span><br><span class="line">    <span class="type">int</span> MOD = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line">    <span class="function"><span class="type">long</span> <span class="type">long</span> <span class="title">dp</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; num;</span><br><span class="line">        <span class="type">int</span> t = s.<span class="built_in">length</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; t; i++)</span><br><span class="line">            num.<span class="built_in">push_back</span>(s[i] - <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">        <span class="type">long</span> <span class="type">long</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> last = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; t; i++)&#123;</span><br><span class="line">            <span class="type">int</span> x = num[i];</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = (i == <span class="number">0</span>); j &lt; x; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(<span class="built_in">abs</span>(j - last) == <span class="number">1</span> || i == <span class="number">0</span>)&#123;</span><br><span class="line">                    ans += f[t - i][j];</span><br><span class="line">                    ans %= MOD;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">abs</span>(x - last) != <span class="number">1</span> &amp;&amp; i != <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">            last = x;</span><br><span class="line">            <span class="keyword">if</span>(i == t - <span class="number">1</span>) &#123;</span><br><span class="line">                ans ++;</span><br><span class="line">                ans %= MOD;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; t; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt; <span class="number">10</span>;j ++)&#123;</span><br><span class="line">                ans += f[i][j];</span><br><span class="line">                ans %= MOD;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">countSteppingNumbers</span><span class="params">(string low, string high)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> l1 = low.<span class="built_in">length</span>();</span><br><span class="line">        <span class="type">int</span> l2 = high.<span class="built_in">length</span>();</span><br><span class="line">        <span class="type">int</span> l = l2;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">            f[<span class="number">1</span>][i] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>; i &lt;= l + <span class="number">2</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt; <span class="number">9</span>; j++) &#123;</span><br><span class="line">                f[i][j] = f[i - <span class="number">1</span>][j - <span class="number">1</span>] + f[i - <span class="number">1</span>][j + <span class="number">1</span>];</span><br><span class="line">                f[i][j] %= MOD;</span><br><span class="line">            &#125;</span><br><span class="line">            f[i][<span class="number">0</span>] = f[i - <span class="number">1</span>][<span class="number">1</span>];</span><br><span class="line">            f[i][<span class="number">9</span>] = f[i - <span class="number">1</span>][<span class="number">8</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">long</span> <span class="type">long</span> aa = <span class="built_in">dp</span>(high);</span><br><span class="line">        aa += <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line">        aa -= <span class="built_in">dp</span>(low);</span><br><span class="line">        aa %= MOD;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; l1; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">abs</span>(low[i] - low[i - <span class="number">1</span>])!= <span class="number">1</span>)</span><br><span class="line">                <span class="keyword">return</span> aa;</span><br><span class="line">        &#125;</span><br><span class="line">        aa += <span class="number">1</span>;</span><br><span class="line">        aa %= MOD;</span><br><span class="line">        <span class="keyword">return</span> aa;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="126-单词接龙II"><a href="#126-单词接龙II" class="headerlink" title="126. 单词接龙II"></a>126. 单词接龙II</h4><p>按字典 <code>wordList</code> 完成从单词 <code>beginWord</code> 到单词 <code>endWord</code> 转化，一个表示此过程的 <strong>转换序列</strong> 是形式上像 <code>beginWord -&gt; s1 -&gt; s2 -&gt; ... -&gt; sk</code> 这样的单词序列，并满足：</p>
-<ul>
-<li>每对相邻的单词之间仅有单个字母不同。</li>
-<li>转换过程中的每个单词 <code>si</code>（<code>1 &lt;= i &lt;= k</code>）必须是字典 <code>wordList</code> 中的单词。注意，<code>beginWord</code> 不必是字典 <code>wordList</code> 中的单词。</li>
-<li><code>sk == endWord</code></li>
-</ul>
-<p>给你两个单词 <code>beginWord</code> 和 <code>endWord</code> ，以及一个字典 <code>wordList</code> 。请你找出并返回所有从 <code>beginWord</code> 到 <code>endWord</code> 的 <strong>最短转换序列</strong> ，如果不存在这样的转换序列，返回一个空列表。每个序列都应该以单词列表 <code>[beginWord, s1, s2, ..., sk]</code> 的形式返回。</p>
-<p>在相邻的两个单词之间建边，直接枚举相邻的所有单词，看其是否在单词表中，比二维循环更快。</p>
-<p>bfs找最短距离，dfs找路径。</p>
-<p>从起点开始找，尝试两次剪枝，均TLE。</p>
-<p>dfs找路径的优化策略：直接从终点开始找，然后找该点周围，<code>dis</code>为该点的<code>dis</code>减1的点，放入队列中存储。</p>
-<p>这样不仅是剪枝，直接将所有无用情况全部排除。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    string wl[<span class="number">510</span>];</span><br><span class="line">    vector&lt;vector&lt;string&gt; &gt; ans;</span><br><span class="line">    unordered_map&lt;string, <span class="type">int</span>&gt; mp;</span><br><span class="line">    <span class="type">int</span> head[<span class="number">510</span>], num, maxm, en;</span><br><span class="line">    <span class="type">int</span> dis[<span class="number">510</span>], vis[<span class="number">510</span>];</span><br><span class="line">    <span class="type">int</span> st[<span class="number">510</span>];</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">edge</span> &#123;</span><br><span class="line">        <span class="type">int</span> to, nxt;</span><br><span class="line">    &#125;p[<span class="number">20010</span>];</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> from, <span class="type">int</span> too)</span> </span>&#123;</span><br><span class="line">        p[++num].to = too;</span><br><span class="line">        p[num].nxt = head[from];</span><br><span class="line">        head[from] = num;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> l = dis[en];</span><br><span class="line">        vector&lt;string&gt; v;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt;= l; i++) &#123;</span><br><span class="line">            v.<span class="built_in">push_back</span>(wl[st[i]]);</span><br><span class="line">        &#125;</span><br><span class="line">        ans.<span class="built_in">push_back</span>(v);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> i)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(dis[i] == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="built_in">print</span>();</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        st[dis[i]] = i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> t = head[i]; t; t = p[t].nxt) &#123;</span><br><span class="line">            <span class="keyword">if</span>(dis[p[t].to] == dis[i] - <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="built_in">dfs</span>(p[t].to);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;vector&lt;string&gt;&gt; <span class="built_in">findLadders</span>(string beginWord, string endWord, vector&lt;string&gt;&amp; wordList) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="type">int</span> l = beginWord.<span class="built_in">length</span>();</span><br><span class="line">        <span class="type">int</span> n = wordList.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt;= n + <span class="number">1</span>; i++) &#123;</span><br><span class="line">            head[i] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            mp[wordList[i]] = i + <span class="number">1</span>;</span><br><span class="line">            wl[i + <span class="number">1</span>] = wordList[i];</span><br><span class="line">        &#125;</span><br><span class="line">        wl[n + <span class="number">1</span>] = beginWord;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; l; j++) &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> k = <span class="number">0</span>; k &lt; <span class="number">26</span>; k++) &#123;</span><br><span class="line">                    <span class="keyword">if</span>(wordList[i][j] != <span class="string">&#x27;a&#x27;</span> + k) &#123;</span><br><span class="line">                        string rep = wordList[i];</span><br><span class="line">                        rep[j] = <span class="string">&#x27;a&#x27;</span> + k;</span><br><span class="line">                        <span class="keyword">if</span>(mp.<span class="built_in">count</span>(rep)) &#123;</span><br><span class="line">                            <span class="built_in">add</span>(i + <span class="number">1</span>, mp[rep]);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; l; j++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> k = <span class="number">0</span>; k &lt; <span class="number">26</span>; k++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(beginWord[j] != <span class="string">&#x27;a&#x27;</span> + k) &#123;</span><br><span class="line">                    string rep = beginWord;</span><br><span class="line">                    rep[j] = <span class="string">&#x27;a&#x27;</span> + k;</span><br><span class="line">                    <span class="keyword">if</span>(mp.<span class="built_in">count</span>(rep)) &#123;</span><br><span class="line">                        <span class="built_in">add</span>(n + <span class="number">1</span>, mp[rep]);</span><br><span class="line">                        <span class="built_in">add</span>(mp[rep], n + <span class="number">1</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            vis[i] = <span class="number">0</span>;</span><br><span class="line">            dis[i] = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        queue&lt;<span class="type">int</span>&gt; q;</span><br><span class="line">        q.<span class="built_in">push</span>(n + <span class="number">1</span>);</span><br><span class="line">        vis[n + <span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        dis[n + <span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">        en = mp[endWord];</span><br><span class="line">        <span class="keyword">while</span>(!q.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="type">int</span> t = q.<span class="built_in">front</span>();</span><br><span class="line">            q.<span class="built_in">pop</span>();</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i = head[t]; i; i = p[i].nxt) &#123;</span><br><span class="line">                <span class="keyword">if</span>(!vis[p[i].to]) &#123;</span><br><span class="line">                    dis[p[i].to] = dis[t] + <span class="number">1</span>;</span><br><span class="line">                    q.<span class="built_in">push</span>(p[i].to);</span><br><span class="line">                    vis[p[i].to] = <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        maxm = dis[en];</span><br><span class="line">        <span class="keyword">if</span>(dis[en] == <span class="number">0x3f3f3f3f</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> ans;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt;= n + <span class="number">1</span>; i++) &#123;</span><br><span class="line">            vis[i] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        st[<span class="number">0</span>] = n + <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">dfs</span>(en);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="2791-树中可以形成回文的路径数"><a href="#2791-树中可以形成回文的路径数" class="headerlink" title="2791. 树中可以形成回文的路径数"></a>2791. 树中可以形成回文的路径数</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">int</span> f[<span class="number">100100</span>];</span><br><span class="line">    <span class="type">bool</span> vis[<span class="number">100100</span>];</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; pp;</span><br><span class="line">    string ss;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">bitcount</span><span class="params">(<span class="type">int</span> i)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> num = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i) &#123;</span><br><span class="line">            num += (i % <span class="number">2</span>);</span><br><span class="line">            i /= <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> i)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(vis[i]) <span class="keyword">return</span>;</span><br><span class="line">        <span class="built_in">dfs</span>(pp[i]);</span><br><span class="line">        f[i] = f[pp[i]] ^ (<span class="number">1</span> &lt;&lt; (ss[i] - <span class="string">&#x27;a&#x27;</span>));</span><br><span class="line">        vis[i] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">long</span> <span class="type">long</span> <span class="title">countPalindromePaths</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; parent, string s)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = parent.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">            pp.<span class="built_in">push_back</span>(parent[i]);</span><br><span class="line">        ss = s;</span><br><span class="line">        f[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        vis[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(!vis[i]) <span class="built_in">dfs</span>(i);</span><br><span class="line">        &#125;</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; mp;</span><br><span class="line">        <span class="comment">// for(int i = 0; i &lt; n; i++) &#123;</span></span><br><span class="line">        <span class="comment">//     if(!mp.count(f[i])) &#123;</span></span><br><span class="line">        <span class="comment">//         mp[f[i]] = 1;</span></span><br><span class="line">        <span class="comment">//     &#125;</span></span><br><span class="line">        <span class="comment">//     else &#123;</span></span><br><span class="line">        <span class="comment">//         mp[f[i]]++;</span></span><br><span class="line">        <span class="comment">//     &#125;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="type">long</span> <span class="type">long</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(mp.<span class="built_in">count</span>(f[i])) &#123;</span><br><span class="line">                sum += mp[f[i]];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; <span class="number">26</span>; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(mp.<span class="built_in">count</span>(f[i] ^ (<span class="number">1</span> &lt;&lt; j))) &#123;</span><br><span class="line">                    sum += mp[f[i] ^ (<span class="number">1</span> &lt;&lt; j)];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            mp[f[i]]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/07/11/leetcode-notes/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -324,7 +352,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-01 16:38:56" itemprop="dateModified" datetime="2023-10-01T16:38:56+00:00">2023-10-01</time>
+                <time title="修改时间：2023-10-03 12:50:44" itemprop="dateModified" datetime="2023-10-03T12:50:44+00:00">2023-10-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -347,23 +375,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>创建新项目之后，代码在<code>src/main/java</code>中，其对应布局在 <code>src/main/res/layout</code>中。</p>
-<p><code>drawable</code>是用来设置背景</p>
-<p>res中新建新目录<code>drawable-xhdpi</code>，然后将图片放入其中，然后在布局中设置背景为<code>@drawable/图片名</code>即可。</p>
-<p><code>values</code>中有colors,strings,styles,themes等，可以在其中设置颜色、字符串、样式、主题等。</p>
-<p><code>AndroidManifest.xml</code>中可以设置应用的名称、图标、版本号、权限等。</p>
-<h2 id="LinearLayout和RelativeLayout"><a href="#LinearLayout和RelativeLayout" class="headerlink" title="LinearLayout和RelativeLayout"></a>LinearLayout和RelativeLayout</h2><p>LinearLayout是线性布局，可以设置水平或垂直排列，可以设置权重。</p>
-<p>LinearLayout中要设置排列是vertical还是horizontal，可以设置gravity属性，设置居中、居左、居右等。</p>
-<p>layout_width或者height可以设置match_parent或者wrap_content，也可以设置具体的数值。</p>
-<p>RelativeLayout是相对布局，可以设置控件相对于其他控件的位置。</p>
-<p>在每个控件中要单独设置layout，相对布局</p>
-<p>建议开始使用Linear Layout</p>
-<p>padding, background等属性可以先记下。</p>
-<h2 id="TextView-Button"><a href="#TextView-Button" class="headerlink" title="TextView, Button,"></a>TextView, Button,</h2><p>Text控件可以设置width, height, color, size, textSize一般用sp单位，如”18sp”</p>
-<p>maxEms可以设每一行最多字数</p>
-<p>maxLines是最多多少行</p>
-<p>注意密码要设置inputType为textPassword</p>
-
+          <p>为了完成大作业，学了点连皮毛都算不上的东西。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/05/11/android-intro/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -413,7 +433,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-01 16:38:56" itemprop="dateModified" datetime="2023-10-01T16:38:56+00:00">2023-10-01</time>
+                <time title="修改时间：2023-10-03 12:50:44" itemprop="dateModified" datetime="2023-10-03T12:50:44+00:00">2023-10-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -436,11 +456,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>你好！</p>
-<p>这是我的第一篇博客。</p>
-<p>希望能在这里写一些自己的所思所想。</p>
-<p>Let’s go!</p>
-
+          <p>你好！这是我的第一篇博客。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/05/10/hello-world/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -523,7 +547,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
